@@ -20,5 +20,11 @@ export class SignUpController {
         body: new Error('Missing param: password')
       }
     }
+    if (httpRequest.body.password !== httpRequest.body.passwordConfirmation) {
+      return {
+        statusCode: 400,
+        body: new Error('Unmatch param: password')
+      }
+    }
   }
 }
