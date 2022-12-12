@@ -1,6 +1,6 @@
-export class BadRequestError extends Error {
+export class InvalidRequestError extends Error {
   constructor (errorName: string) {
     super(`Bad request: ${errorName}`)
-    this.name = 'BadRequestError'
+    this.name = 'InvalidRequestError'
   }
 }

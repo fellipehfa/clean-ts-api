@@ -1,6 +1,6 @@
 import { SignUpController } from './signUp'
 import { MissingParamError } from '../errors/missing-params-error'
-import { BadRequestError } from '../errors/bad-request-error'
+import { InvalidRequestError } from '../errors/bad-request-error'
 
 describe('SignUp Controller', () => {
   test('Should return 400 if no name is provided', () => {
@@ -79,6 +79,6 @@ describe('SignUp Controller', () => {
     }
     const httpResponse = sut.handle(httpRequest)
     expect(httpResponse?.statusCode).toBe(400)
-    expect(httpResponse?.body).toEqual(new BadRequestError('unmatch passwords'))
+    expect(httpResponse?.body).toEqual(new InvalidRequestError('unmatch passwords'))
   })
 })

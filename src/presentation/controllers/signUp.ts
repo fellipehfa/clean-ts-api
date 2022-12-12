@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse } from '../protocols/http'
-import { BadRequestError } from '../errors/bad-request-error'
+import { InvalidRequestError } from '../errors/bad-request-error'
 import { MissingParamError } from '../errors/missing-params-error'
 import { badRequest } from '../helper/http-helper'
 
@@ -12,7 +12,7 @@ export class SignUpController {
       }
     }
     if (httpRequest.body.password !== httpRequest.body.passwordConfirmation) {
-      return badRequest(new BadRequestError('unmatch passwords'))
+      return badRequest(new InvalidRequestError('unmatch passwords'))
     }
   }
 }
