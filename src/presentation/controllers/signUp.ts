@@ -23,7 +23,7 @@ export class SignUpController {
     if (httpRequest.body.password !== httpRequest.body.passwordConfirmation) {
       return {
         statusCode: 400,
-        body: new Error('Unmatch param: password')
+        body: new Error('Bad request: unmatch passwords')
       }
     }
   }
