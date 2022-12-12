@@ -1,30 +1,21 @@
 import { HttpRequest, HttpResponse } from '../protocols/http'
+import { BadRequestError } from '../errors/bad-request-error'
+import { MissingParamError } from '../errors/missing-params-error'
+import { badRequest } from '../helper/http-helper'
 
 export class SignUpController {
   handle (httpRequest: HttpRequest): HttpResponse | undefined {
     if (!httpRequest.body.name) {
-      return {
-        statusCode: 400,
-        body: new Error('Missing param: name')
-      }
+      return badRequest(new MissingParamError('name'))
     }
     if (!httpRequest.body.email) {
-      return {
-        statusCode: 400,
-        body: new Error('Missing param: email')
-      }
+      return badRequest(new MissingParamError('email'))
     }
     if (!httpRequest.body.password || !httpRequest.body.passwordConfirmation) {
-      return {
-        statusCode: 400,
-        body: new Error('Missing param: password')
-      }
+      return badRequest(new MissingParamError('password'))
     }
     if (httpRequest.body.password !== httpRequest.body.passwordConfirmation) {
-      return {
-        statusCode: 400,
-        body: new Error('Bad request: unmatch passwords')
-      }
+      return badRequest(new BadRequestError('unmatch passwords'))
     }
   }
 }
