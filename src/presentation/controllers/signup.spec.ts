@@ -1,4 +1,4 @@
-import { InvalidRequestError, MissingParamError, ServerError } from '../errors'
+import { InvalidParamError, MissingParamError, ServerError } from '../errors'
 import { EmailValidator } from '../protocols'
 import { SignUpController } from './signUp'
 
@@ -82,7 +82,7 @@ describe('SignUp Controller', () => {
     expect(httpResponse?.body).toEqual(new MissingParamError('passwordConfirmation'))
   })
 
-  test('Should return 400 if no password does not match', () => {
+  test('Should return 400 if no passwords does not match', () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -94,7 +94,7 @@ describe('SignUp Controller', () => {
     }
     const httpResponse = sut.handle(httpRequest)
     expect(httpResponse?.statusCode).toBe(400)
-    expect(httpResponse?.body).toEqual(new InvalidRequestError('unmatch passwords'))
+    expect(httpResponse?.body).toEqual(new InvalidParamError('unmatch passwords'))
   })
 
   test('Should return 400 if an invalid email is provided', () => {
@@ -110,7 +110,7 @@ describe('SignUp Controller', () => {
     }
     const httpResponse = sut.handle(httpRequest)
     expect(httpResponse?.statusCode).toBe(400)
-    expect(httpResponse?.body).toEqual(new InvalidRequestError('email'))
+    expect(httpResponse?.body).toEqual(new InvalidParamError('email'))
   })
 
   test('Should call EmailValidator with correct email', () => {
