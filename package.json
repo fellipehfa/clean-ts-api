@@ -23,8 +23,12 @@
     "typescript": "^4.8.3"
   },
   "scripts": { 
-    "test": "jest --passWithNoTests --watch --runInBand --no-cache",
-    "test:staged": "jest --passWithNoTests",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:verbose": "jest --passWithNoTests",
+    "test:unit": "npm run test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm run test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm run test -- --findRelatedTests",
+    "test:ci": "npm run test -- --coverage",
     "prepare": "husky install"
   }
 }
