@@ -5,10 +5,13 @@
   "repository": "git@github.com:fellipehfa/clean-ts-api.git",
   "author": "Fellipe Henrique <fellipehf@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "validator": "^13.7.0"
+  },
   "devDependencies": {
     "@types/jest": "^29.0.2",
     "@types/node": "^18.7.18",
+    "@types/validator": "^13.7.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^23.0.0",
@@ -22,8 +25,8 @@
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   },
-  "scripts": { 
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+  "scripts": {
+    "test": "jest --colors --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests",
     "test:unit": "npm run test -- --watch -c jest-unit-config.js",
     "test:integration": "npm run test -- --watch -c jest-integration-config.js",
