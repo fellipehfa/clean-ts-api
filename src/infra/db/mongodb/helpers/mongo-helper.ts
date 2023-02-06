@@ -1,5 +1,4 @@
-import { MongoClient, Collection, InsertOneResult } from 'mongodb'
-import { AddAccountModel } from '../../../../domain/usecases/add-account'
+import { MongoClient, Collection } from 'mongodb'
 
 export const MongoHelper = {
   client: null as MongoClient,
@@ -21,7 +20,9 @@ export const MongoHelper = {
     return this.client.db().collection(name)
   },
 
-  createOne (accountData: AddAccountModel): InsertOneResult {
-    return this.client.insertOne(accountData)
+  map (collectionDataWithId: any): any {
+    const { _id, ...collectionDataWithoutId } = collectionDataWithId
+    const account = Object.assign({}, collectionDataWithoutId, { id: _id })
+    return account
   }
 }
