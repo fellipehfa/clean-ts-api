@@ -14,11 +14,28 @@ class ControllerStub implements Controller {
   }
 }
 
+const makeController = (): Controller => {
+  return new ControllerStub()
+}
+
+interface SutTypes {
+  sut: LogControllerDecorator
+  controllerStub: ControllerStub
+}
+
+const makeSut = (): SutTypes => {
+  const controllerStub = makeController()
+  const sut = new LogControllerDecorator(controllerStub)
+  return {
+    sut,
+    controllerStub
+  }
+}
+
 describe('LogController Decorator', () => {
   test('Should call controller handle ', async () => {
-    const controllerStub = new ControllerStub()
+    const { sut, controllerStub } = makeSut()
     const handleSpy = jest.spyOn(controllerStub, 'handle')
-    const sut = new LogControllerDecorator(controllerStub)
     const httpRequest = {
       body: {
         email: 'fellipehf@gmail.com',
