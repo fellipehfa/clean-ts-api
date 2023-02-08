@@ -43,7 +43,7 @@
     "test:verbose": "jest --passWithNoTests",
     "test:unit": "npm run test -- --watch -c jest-unit-config.js",
     "test:integration": "npm run test -- --watch -c jest-integration-config.js",
-    "test:staged": "npm run test -- --findRelatedTests /src",
+    "test:staged": "npm run test -- -c jest-unit-config.js",
     "test:ci": "npm run test -- --coverage",
     "prepare": "husky install"
   }
