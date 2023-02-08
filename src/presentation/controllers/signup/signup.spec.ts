@@ -1,5 +1,5 @@
 import { InvalidParamError, MissingParamError, ServerError } from '../../errors'
-import { serverError, badRequest, success } from '../../helper/http-helper'
+import { badRequest, serverError, success } from '../../helper/http-helper'
 import { SignUpController } from './signup'
 import { AccountModel, AddAccount, AddAccountModel, EmailValidator, HttpRequest } from './signup-protocols'
 
@@ -118,7 +118,7 @@ describe('SignUp Controller', () => {
       }
     }
     const httpResponse = await sut.handle(httpRequest)
-    expect(httpResponse).toEqual(badRequest(new InvalidParamError('unmatch passwords')))
+    expect(httpResponse).toEqual(badRequest(new InvalidParamError('unmatched passwords')))
   })
 
   test('Should return 400 if an invalid email is provided', async () => {
