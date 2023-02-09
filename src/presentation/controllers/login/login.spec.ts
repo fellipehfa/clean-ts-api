@@ -1,7 +1,7 @@
 import { InvalidParamError, MissingParamError, ServerError } from '../../errors'
 import { badRequest, serverError, success, unauthorizedError } from '../../helper/http-helper'
 import { LoginController } from './login'
-import { Authentication, EmailValidator, HttpRequest, HttpResponse } from './login-protocols'
+import { Authentication, AuthModel, EmailValidator, HttpRequest } from './login-protocols'
 
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
@@ -28,12 +28,9 @@ const makeFakeRequest = (): HttpRequest => ({
   }
 })
 
-const makeFakeAuthentication = (): HttpResponse => ({
-  statusCode: 200,
-  body: {
-    email: 'any_email@mail.com',
-    token: 'any_token'
-  }
+const makeFakeAuthentication = (): AuthModel => ({
+  email: 'any_email@mail.com',
+  token: 'any_token'
 })
 
 interface SutTypes {

@@ -27,14 +27,7 @@ export class LoginController implements Controller {
       const token = await this.authentication.auth(email, password)
       if (!token) return unauthorizedError()
 
-      const authentication = {
-        statusCode: 200,
-        body: {
-          email,
-          token
-        }
-      }
-      return success(authentication)
+      return success({ token, email })
     } catch (error) {
       return serverError(error)
     }
