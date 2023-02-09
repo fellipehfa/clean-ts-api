@@ -40,10 +40,10 @@
   "scripts": {
     "start": "sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
-    "test:verbose": "jest --passWithNoTests",
+    "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm run test -- --watch -c jest-unit-config.js",
     "test:integration": "npm run test -- --watch -c jest-integration-config.js",
-    "test:staged": "npm run test -- -c jest-unit-config.js",
+    "test:staged": "npm run test -- --findRelatedTests",
     "test:ci": "npm run test -- --coverage",
     "prepare": "husky install"
   }
