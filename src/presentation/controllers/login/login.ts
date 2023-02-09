@@ -28,9 +28,9 @@ export class LoginController implements Controller {
       }
       const token = await this.authentication.auth(email, password)
       if (!token) {
-        return new Promise(resolve => resolve(null))
+        return await new Promise(resolve => resolve(null))
       }
-      //fake response
+      // fake Response
       const authentication = {
         statusCode: 200,
         body: {
