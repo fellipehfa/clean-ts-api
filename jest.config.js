@@ -8,7 +8,9 @@ module.exports = {
     '!<rootDir>/src/presentation/controllers/signup/signup-protocols.ts',
     '!<rootDir>/src/presentation/controllers/login/login-protocols.ts',
     '!<rootDir>/src/presentation/helper/validator/required-field-validation.ts',
-    '!<rootDir>/src/presentation/helper/validator/validation-composite.ts'
+    '!<rootDir>/src/presentation/helper/validator/validation-composite.ts',
+    '!<rootDir>/src/presentation/helper/validator/email-validation.ts',
+    '!<rootDir>/src/presentation/helper/validator/compare-field-validation.ts'
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
