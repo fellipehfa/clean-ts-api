@@ -1,15 +1,19 @@
 import { MissingParamError } from '../../errors'
 import { RequiredFieldValidation } from './required-field-validation'
 
+const makeSut = (): RequiredFieldValidation => {
+  return new RequiredFieldValidation('any_field')
+}
+
 describe('Compare Fields Validation', () => {
   test('Should return a MissingParamError if Validation fails', () => {
-    const sut = new RequiredFieldValidation('inconsistent_field')
-    const error = sut.validate({ any_field: 'any_data' })
-    expect(error).toEqual(new MissingParamError('inconsistent_field'))
+    const sut = makeSut()
+    const error = sut.validate({ inconsistent_field: 'any_data' })
+    expect(error).toEqual(new MissingParamError('any_field'))
   })
 
   test('Should not return if validation succeeds', () => {
-    const sut = new RequiredFieldValidation('any_field')
+    const sut = makeSut()
     const error = sut.validate({ any_field: 'any_data' })
     expect(error).toBeFalsy()
   })
