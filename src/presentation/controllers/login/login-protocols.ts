@@ -1,5 +1,3 @@
 export * from '../../../domain/models/auth'
 export * from '../../../domain/usecases/authentication'
-export * from '../../helper/validator/validation'
 export * from '../../protocols'
-export * from '../../protocols/authentication'

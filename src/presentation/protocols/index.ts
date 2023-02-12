@@ -1,2 +1,5 @@
 export * from './controller'
 export * from './http'
+export * from './validation'
+export * from './authentication'
+export * from './email-validator'
