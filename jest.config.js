@@ -13,7 +13,7 @@ module.exports = {
     '!<rootDir>/src/presentation/helper/validator/email-validation.ts',
     '!<rootDir>/src/presentation/helper/validator/compare-field-validation.ts',
     '!<rootDir>/src/data/protocols/cryptography/index.ts',
-    '!<rootDir>/src/data/protocols/db/index.ts'
+    '!<rootDir>/src/data/protocols/db/account/index.ts'
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
