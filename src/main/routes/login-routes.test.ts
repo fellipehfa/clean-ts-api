@@ -51,5 +51,25 @@ describe('Login Routes', () => {
         })
         .expect(200)
     })
+
+    test('Should return 401 on login if user not exists', async () => {
+      await request(app)
+        .post('/api/login')
+        .send({
+          email: 'fellipehf@gmail.com',
+          password: '123'
+        })
+        .expect(401)
+    })
+
+    test('Should return 404 on login with wrong password', async () => {
+      await request(app)
+        .post('/api/login')
+        .send({
+          email: 'fellipehf@gmail.com',
+          password: '111'
+        })
+        .expect(401)
+    })
   })
 })
